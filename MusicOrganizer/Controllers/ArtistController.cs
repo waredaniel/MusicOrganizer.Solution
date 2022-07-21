@@ -25,5 +25,11 @@ namespace MusicOrganizer.Controllers
       Artist foundArtist = Artist.Find(id);
       return View(foundArtist);
     }
+    [HttpGet("/artist/new")]
+    public ActionResult New()
+    {
+      return View();
+    }
+
   }
 }
