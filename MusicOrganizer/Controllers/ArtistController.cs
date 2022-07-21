@@ -13,5 +13,17 @@ namespace MusicOrganizer.Controllers
       List<Artist> allArtists = Artist.GetAll();
       return View(allArtists);
     }
+      [HttpPost("/artist")]
+    public ActionResult Create(string artistName)
+    {
+      Artist theArtist = new Artist(artistName);
+      return RedirectToAction("Index");
+    }
+    [HttpGet("/artist/{id}")]
+    public ActionResult Show(int id)
+    {
+      Artist foundArtist = Artist.Find(id);
+      return View(foundArtist);
+    }
   }
 }
