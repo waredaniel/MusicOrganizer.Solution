@@ -4,11 +4,24 @@ namespace MusicOrganizer.Models
 {
   public class Artist
   {
-    public string Description { get; set; }
-
-    public Artist(string description)
+    public string ArtistName { get; set; }
+    public int Id { get; }
+    private static List<Artist> _instances = new List<Artist> {};
+    public Artist(string artistName)
     {
-      Description = description;
+      ArtistName = artistName;
+      _instances.Add(this);
+      Id = _instances.Count;
+    }
+    
+    public static void ClearAll()
+    {
+      _instances.Clear();
+    }
+
+    public static List<Artist> GetAll()
+    {
+      return _instances;
     }
   }
 }
